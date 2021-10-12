@@ -1,0 +1,13 @@
+package tik_tak_toe;
+
+
+
+public class Login {
+	
+	String username = "Gokul";
+	
+	public void dips() {
+		System.out.print(username);
+	}
+
+}

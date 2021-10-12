@@ -1,0 +1,15 @@
+package tik_tak_toe;
+
+
+
+public class Login {
+	
+	String username;
+	String password;
+	
+	public void disp() {
+		
+		System.out.print(username);
+	}
+
+}

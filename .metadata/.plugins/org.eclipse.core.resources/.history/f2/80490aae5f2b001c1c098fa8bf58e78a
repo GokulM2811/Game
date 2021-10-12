@@ -1,0 +1,41 @@
+package tik_tak_toe;
+
+import java.sql.*;
+
+public class Login {
+
+	DBHandler db = new DBHandler();
+	
+	String username="Gokul";
+	String password="Gokul@2811";
+	
+	
+	public void login() {
+		
+	}
+	
+	
+	public boolean isUserExist() {
+		
+		try {
+			DBHandler db = new DBHandler();
+			Connection con = db.getConnection();			
+			
+			PreparedStatement pst = con.prepareStatement("select count(*) from userDetails where name=? and password=?");
+			pst.setString(1,username);
+			pst.setString(2,password);
+			ResultSet rs = pst.executeQuery();
+			int d=0;
+			while(rs.next()) {
+				d = rs.getInt(1);
+			}	
+			System.out.println(d);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+}

@@ -1,0 +1,33 @@
+package tik_tak_toe;
+
+import java.io.*;
+import java.sql.*;
+import java.util.*;
+
+public class DBHandler {
+	
+	Connection con;
+	Properties prop = new Properties();
+	
+	
+	public Connection getConnection() throws ClassNotFoundException, SQLException {
+
+		try {
+			FileReader fr = new FileReader("info.properties");
+			prop.load(fr);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Class.forName(prop.getProperty("driver"));
+		con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","SYS as SYSDBA","Gokul@2811");
+		return con;
+	}
+	
+	public void closeConnection() throws SQLException {
+		con.close();
+	}
+
+}
